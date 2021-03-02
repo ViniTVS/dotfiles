@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+source $HOME/.owl4ce_var && printf "\ec"
+R="\e[1;31m"; G="\e[1;32m"; M="\e[1;35m"; C="\e[1;36m"; W="\e[1;37m"; NC="\e[0m"
+
+capitalize() { echo "$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}"; }
+[[ $CHK_MINMOD != "" ]] && CHK_MINMOD="$(echo "$(capitalize $CHK_MINMOD) ")"
+echo -e "${G}<${C}=${G}> ${W}Select wallpaper for $CHK_MINMOD$(capitalize $CHK_VISMOD) Theme"
+n=0
+for img in $WALL_DIR/*; do
+    n="$((n+1))"
+    imgfilt="$(echo $img | grep -oE '[^/]+$' $1)"
+    printf "${M}[${NC}%s${M}] ${NC}%s\n" "$n" "$imgfilt"
+    eval "img${n}=\$img"
+done
+printf "${G}<${C}=${G}> ${W}Enter File Index ID ${M}[${NC}1${M}] ${W}to ${M}[${NC}%s${M}]${W}: ${NC}" "$n"
+read -r num
+num="$(printf '%s\n' "$num" | tr -dc '[:digit:]')"
+if [[ "$num" -le 0 ]] || [[ "$num" -gt "$n" ]]; then
+    printf >&2 "${G}<${C}=${G}> ${R}Wrong selection!\n" && exit 1
+else
+    eval "IMG=\$img${num}"
+    nitrogen --set-zoom-fill --save "$IMG" &> /dev/null
+    # Write selected
+    selected="$(echo "$IMG" | awk -F"$CHK_VISMOD/" '{print $2}')"
+    WALL_FILE="$VISMOD_WALL_FILE" && [[ $CHK_MINMOD != "" ]] && WALL_FILE="$MINMOD_WALL_FILE" 
+    echo "$selected" > $WALL_FILE
+    printf "${G}<${C}=${G}> ${W}Selected wallpaper: ${NC}$selected\n"
+    # Notify success
+    $EXNOTIFY_SEND -r 99 -u low -i "$NOTIF_WALLY_ICON" "Wallpaper" "Applied: <u>$selected</u>"
+fi

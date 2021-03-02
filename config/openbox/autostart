@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# These things are run when an Openbox X Session is started.
+
+# Start mpd if defined as default music player
+[[ "$($DEFAPPS_EXEC -g musicpl)" = "mpd" ]] && \
+bash -c "$MPD_TCD"
+
+exec $HOME/scripts/autostart.sh
+
