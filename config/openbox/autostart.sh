@@ -1,1 +1,1 @@
-# $HOME/scripts/autostart.sh &
+$HOME/scripts/autostart.sh &

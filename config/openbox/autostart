@@ -1,9 +1,33 @@
-#!/usr/bin/env sh
+#
 # These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+# ---
+# source $HOME/.owl4ce_v
 
-# Start mpd if defined as default music player
-[[ "$($DEFAPPS_EXEC -g musicpl)" = "mpd" ]] && \
-bash -c "$MPD_TCD"
+# unset LD_PRELOAD
 
-exec $HOME/scripts/autostart.sh
+# Start pulseaudio if not started automatically
+# pulseaudio --start --log-target=syslog &
 
+# UI Appearance
+# bash -c "$VISMOD_DIR/mode-toggle startup"
+
+# Compositor
+# picom -b
+
+# Authentication Agent - PolicyKit
+# lxpolkit &
+
+# Power Manager
+#xfce4-power-manager &
+
+# Sessions Autolock
+# xautolock -time $AUTOLOCK_MINUTE -locker "$($DEFAPPS_EXEC -g lockscreen)" -detectsleep &
+
+# Others
+# Below will autostart mpd
+# bash -c "$MPD_TCD"
+
+/home/vinicius/scripts/autostart.sh

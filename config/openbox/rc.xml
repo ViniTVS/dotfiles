@@ -5,20 +5,8 @@
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
   </resistance>
-  <focus>
-    <focusNew>yes</focusNew>
-    <!-- always try to focus new windows when they appear. other rules do apply -->
-    <followMouse>no</followMouse>
-    <!-- move focus to a window when you move the mouse into it -->
-    <focusLast>yes</focusLast>
-    <!-- focus the last used window when changing desktops, instead of the one under the mouse pointer. when followMouse is enabled -->
-    <underMouse>no</underMouse>
-    <!-- move focus under the mouse, even when the mouse is not moving -->
-    <focusDelay>10</focusDelay>
-    <!-- when followMouse is enabled, the mouse must be inside the window for this many milliseconds (1000 = 1 sec) before moving focus to it -->
-    <raiseOnFocus>no</raiseOnFocus>
-    <!-- when followMouse is enabled, and a window is given focus by moving the mouse into it, also raise the window -->
-  </focus>
+  <focus><focusNew>yes</focusNew><!-- always try to focus new windows when they appear. other rules do apply --><followMouse>no</followMouse>4
+    <!-- move focus to a window when you move the mouse into it --><focusLast>yes</focusLast><!-- focus the last used window when changing desktops, instead of the one under the mouse pointer. when followMouse is enabled --><underMouse>no</underMouse><!-- move focus under the mouse, even when the mouse is not moving --><focusDelay>10</focusDelay><!-- when followMouse is enabled, the mouse must be inside the window for this many milliseconds (1000 = 1 sec) before moving focus to it --><raiseOnFocus>no</raiseOnFocus><!-- when followMouse is enabled, and a window is given focus by moving the mouse into it, also raise the window --></focus>
   <placement>
     <policy>Smart</policy>
     <!-- 'Smart' or 'UnderMouse' -->
@@ -31,7 +19,7 @@
     'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>BluePixel</name>
+    <name>DarkPixels</name>
     <titleLayout>LIMC</titleLayout>
     <!-- available characters are NDSLIMC, each can occur at most once. N: window icon L: window label (AKA title). I: iconify M: maximize C: close S: shade (roll up/down) D: omnipresent (on all desktops). -->
     <keepBorder>yes</keepBorder>
@@ -65,7 +53,7 @@
     </font>
     <font place="MenuItem">
       <name>Cantarell</name>
-      <size>9</size>
+      <size>11</size>
       <!-- font size in points -->
       <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
@@ -94,17 +82,14 @@
   <desktops>
     <!-- this stuff is only used at startup, pagers allow you to change them during a session these are default values to use when other ones are not already set by other applications, or saved in your session use obconf if you want to change these
     without having to log out and back in -->
-    <number>8</number>
+    <number>5</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>1</name>
-      <name>2</name>
-      <name>3</name>
-      <name>4</name>
-      <name>5</name>
-      <name>6</name>
-      <name>7</name>
-      <name>8</name>
+      <name>www</name>
+      <name>code</name>
+      <name>utils</name>
+      <name>extra</name>
+      <name>extra 2</name>
     </names>
     <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching desktops. Set this to 0 to disable the popup. -->
@@ -125,10 +110,10 @@
   </resize>
   <!-- You can reserve a portion of your screen where windows will not cover when they are maximized, or when they are initially placed. Many programs reserve space automatically, but you can use this in other cases. -->
   <margins>
-    <top>10</top>
-    <bottom>10</bottom>
-    <left>10</left>
-    <right>10</right>
+    <top>110</top>
+    <bottom>50</bottom>
+    <left>50</left>
+    <right>50</right>
   </margins>
   <dock>
     <position>Bottom</position>
@@ -199,28 +184,14 @@
       </action>
     </keybind>
     <!-- window switching with the arrow keys -->
-    <keybind key="W-S-Right">
-      <action name="DirectionalCycleWindows">
-        <bar>yes</bar>
-        <dialog>no</dialog>
-        <direction>right</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-Left">
-      <action name="DirectionalCycleWindows">
-        <bar>yes</bar>
-        <dialog>no</dialog>
-        <direction>left</direction>
-      </action>
-    </keybind>
-    <keybind key="W-S-Up">
+    <keybind key="W-C-Up">
       <action name="DirectionalCycleWindows">
         <bar>yes</bar>
         <dialog>no</dialog>
         <direction>up</direction>
       </action>
     </keybind>
-    <keybind key="W-S-Down">
+    <keybind key="W-C-Down">
       <action name="DirectionalCycleWindows">
         <bar>yes</bar>
         <dialog>no</dialog>
@@ -228,11 +199,43 @@
       </action>
     </keybind>
     <!-- split/tile window -->
+    <keybind key="W-C-Right">
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>745/1000</width>
+        <height>1/1</height>
+      </action>
+    </keybind>
+    <keybind key="W-C-Left">
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>745/1000</width>
+        <height>1/1</height>
+      </action>
+    </keybind>
+    <keybind key="W-A-Right">
+      <action name="MoveResizeTo">
+        <x>-0</x>
+        <y>0</y>
+        <width>245/1000</width>
+        <height>1/1</height>
+      </action>
+    </keybind>
+    <keybind key="W-A-Left">
+      <action name="MoveResizeTo">
+        <x>0</x>
+        <y>0</y>
+        <width>245/1000</width>
+        <height>1/1</height>
+      </action>
+    </keybind>
     <keybind key="W-Left">
       <action name="MoveResizeTo">
         <x>0</x>
         <y>0</y>
-        <width>99/200</width>
+        <width>495/1000</width>
         <height>1/1</height>
       </action>
     </keybind>
@@ -240,23 +243,42 @@
       <action name="MoveResizeTo">
         <x>-0</x>
         <y>0</y>
-        <width>99/200</width>
+        <width>495/1000</width>
         <height>1/1</height>
       </action>
     </keybind>
     <keybind key="W-Up">
       <action name="MoveResizeTo">
         <y>0</y>
-        <width>99/200</width>
-        <height>99/200</height>
+        <width>495/1000</width>
+        <height>49%</height>
       </action>
     </keybind>
     <keybind key="W-Down">
       <action name="MoveResizeTo">
         <y>-0</y>
-        <width>99/200</width>
-        <height>99/200</height>
+        <width>495/1000</width>
+        <height>49%</height>
       </action>
+    </keybind>
+    <!-- resize windows with Alt + Direction -->
+    <keybind key="W-S-Right">
+      <action name="ResizeRelative">
+        <x>5</x>
+        <y>5</y>
+      </action>
+    </keybind>
+    <keybind key="W-S-Left">
+      <action name="GrowToEdgeWest"/>
+    </keybind>
+    <keybind key="W-S-Right">
+      <action name="GrowToEdgeEast"/>
+    </keybind>
+    <keybind key="W-S-Down">
+      <action name="GrowToEdgeSouth"/>
+    </keybind>
+    <keybind key="W-S-Up">
+      <action name="GrowToEdgeNorth"/>
     </keybind>
     <!-- desktop switching -->
     <keybind key="W-1">
@@ -345,11 +367,13 @@
         <menu>client-menu</menu>
       </action>
     </keybind>
+    <!--
     <keybind key="W-space">
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
     </keybind>
+     -->
     <keybind key="W-t">
       <action name="ToggleDecorations"/>
     </keybind>
@@ -357,6 +381,14 @@
       <action name="Execute">
         <command>openbox --reconfigure --restart</command>
       </action>
+    </keybind>
+    <keybind key="W-f">
+      <action name="Execute">
+        <command>firefox</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-h">
+      <action name="ToggleFullscreen"/>
     </keybind>
     <keybind key="W-x">
       <action name="ToggleMaximize"/>
@@ -427,9 +459,14 @@
         <command>kitty</command>
       </action>
     </keybind>
-    <keybind key="W-f">
+    <keybind key="W-space">
       <action name="Execute">
-        <command>firefox</command>
+        <command>~/.config/polybar/scripts/menu.sh </command>
+      </action>
+    </keybind>
+    <keybind key="W-s">
+      <action name="Execute">
+        <command>spotify --force-device-scale-factor=1.8 %U</command>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -444,7 +481,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>bash -c '~/.scripts/shot-now'</command>
+        <command>spectacle</command>
       </action>
     </keybind>
     <keybind key="W-Print">
@@ -485,6 +522,36 @@
         <action name="Lower"/>
         <action name="FocusToBottom"/>
         <action name="Unfocus"/>
+      </mousebind>
+      <mousebind button="W-Up" action="Click">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="W-Down" action="Click">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind button="C-A-Up" action="Click">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="C-A-Down" action="Click">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind button="A-S-Up" action="Click">
+        <action name="SendToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="A-S-Down" action="Click">
+        <action name="SendToDesktop">
+          <to>next</to>
+        </action>
       </mousebind>
     </context>
     <context name="Titlebar">
@@ -679,6 +746,26 @@
       </mousebind>
     </context>
     <context name="Desktop">
+      <mousebind button="A-Up" action="Click">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="A-Down" action="Click">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind button="C-A-Up" action="Click">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="C-A-Down" action="Click">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
@@ -712,12 +799,12 @@
           <to>next</to>
         </action>
       </mousebind>
-      <mousebind button="W-Up" action="Click">
+      <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
         </action>
       </mousebind>
-      <mousebind button="W-Down" action="Click">
+      <mousebind button="A-Down" action="Click">
         <action name="GoToDesktop">
           <to>next</to>
         </action>
