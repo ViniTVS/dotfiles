@@ -1,5 +1,5 @@
 # dotfiles
-
+yay -S --noconfirm nerd-fonts-git
 
 ## Dependencies:
 [jonaburg's picom](https://github.com/jonaburg/picom)

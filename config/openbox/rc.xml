@@ -461,7 +461,7 @@
     </keybind>
     <keybind key="W-space">
       <action name="Execute">
-        <command>~/.config/polybar/scripts/menu.sh </command>
+        <command> ulauncher </command>
       </action>
     </keybind>
     <keybind key="W-s">

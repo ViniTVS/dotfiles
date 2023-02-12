@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# from https://github.com/druskus20/eugh
+
+d0=""
+d1=""
+d2=""
+d3=""
+d4=""
+#!/bin/bash
+
+wmctrl -d | grep '*' | cut -d ' ' -f1

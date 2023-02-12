@@ -1,0 +1,159 @@
+# Window Appearance
+padding.width: 9
+padding.height: 16
+
+## Titlebar
+window.active.title.bg: flat
+window.active.title.bg.color: {color0}
+window.inactive.title.bg: flat
+window.inactive.title.bg.color: {color0}
+
+## Titlebar Text
+window.label.text.justify: center
+window.active.label.bg: parentrelative
+window.active.label.text.color: #ffffff
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: {color7}
+
+## Borders
+border.width: 0
+window.active.border.color: {color7}
+window.inactive.border.color: {color7}
+
+## Handle
+window.handle.width: 8
+window.active.handle.bg: flat
+window.active.handle.bg.color: {color7}
+window.inactive.handle.bg: flat
+window.inactive.handle.bg.color: {color0}
+
+## Client
+window.client.padding.width: 0
+window.client.padding.height: 0
+window.active.client.color: {color7}
+window.inactive.client.color: {color7}
+
+## Grip
+window.active.grip.bg: flat
+window.active.grip.bg.color: {color7}
+window.inactive.grip.bg: flat
+window.inactive.grip.bg.color: {color7}
+
+# --------------------------------------------------------
+
+# Window Buttons
+window.*.button.*.bg: parentrelative
+window.*.button.*.pressed.bg: flat
+
+## Active Universal
+window.active.button.*.hover.bg: flat
+window.active.button.*.hover.bg: parentrelative
+window.active.button.*.hover.image.color: {color2}
+window.active.button.*.hover.bg.color: {color6}
+window.active.button.*.pressed.image.color: {color7}
+window.active.button.*.pressed.bg.color: {color6}
+window.active.button.toggled.hover.image.color: {color2}
+window.active.button.toggled.image.color: {color0}
+window.active.button.toggled.pressed.image.color: {color0}
+window.active.button.disabled.image.color: {color2}
+
+## Inactive Universal
+window.inactive.button.*.hover.bg: flat
+window.inactive.button.*.hover.bg: parentrelative
+window.inactive.button.*.hover.image.color: {color2}
+window.inactive.button.*.hover.bg.color: {color6}
+window.inactive.button.*.pressed.image.color: {color7}
+window.inactive.button.*.pressed.bg.color: {color6}
+window.inactive.button.toggled.hover.image.color: {color2}
+window.inactive.button.toggled.image.color: {color2}
+window.inactive.button.toggled.pressed.image.color: {color0}
+window.inactive.button.disabled.image.color: {color2}
+
+## Close Button
+window.active.button.close.unpressed.image.color: {color3}
+window.active.button.close.pressed.image.color: {color3}
+window.active.button.close.pressed.bg.color: {color0}
+window.inactive.button.close.unpressed.image.color: {color2}
+window.inactive.button.close.pressed.image.color: {color2}
+window.inactive.button.close.pressed.bg.color: {color0}
+
+## Maximize Button
+window.active.button.max.unpressed.image.color: {color7}
+window.active.button.max.pressed.image.color: {color7}
+window.active.button.max.pressed.bg.color: {color0}
+window.inactive.button.max.unpressed.image.color: {color2}
+window.inactive.button.max.pressed.image.color: {color2}
+window.inactive.button.max.pressed.bg.color: {color0}
+
+## Iconify Button (Minimize)
+window.active.button.iconify.unpressed.image.color: {color5}
+window.active.button.iconify.pressed.image.color: {color5}
+window.active.button.iconify.pressed.bg.color: {color0}
+window.inactive.button.iconify.unpressed.image.color: {color2}
+window.inactive.button.iconify.pressed.image.color: {color2}
+window.inactive.button.iconify.pressed.bg.color: {color0}
+
+## Shade Button (Roll up)
+window.active.button.shade.unpressed.image.color: {color1}
+window.active.button.shade.pressed.image.color: {color1}
+window.active.button.shade.pressed.bg.color: {color7}
+window.inactive.button.shade.unpressed.image.color: {color2}
+window.inactive.button.shade.pressed.image.color: {color2}
+window.inactive.button.shade.pressed.bg.color: {color7}
+
+## Desk Button (Omnipresents)
+window.active.button.desk.unpressed.image.color: {color1}
+window.active.button.desk.pressed.image.color: {color1}
+window.active.button.desk.pressed.bg.color: {color7}
+window.inactive.button.desk.unpressed.image.color: {color2}
+window.inactive.button.desk.pressed.image.color: {color2}
+window.inactive.button.desk.pressed.bg.color: {color7}
+
+# --------------------------------------------------------
+
+# ------------------------------------- Openbox Menu ----------------------------------------
+menu.overlap.x: -8
+
+## Separator
+menu.separator.padding.height: 2
+menu.separator.color: {color6}
+
+## Border
+menu.border.width: 2
+menu.border.color: #0B0C0D
+
+## Title
+menu.title.bg: flat
+menu.title.bg.color: {color7}
+menu.title.text.color: #000000
+menu.title.text.justify: center
+
+## Items
+menu.items.bg: flat
+menu.items.bg.color: #0B0C0D
+menu.items.text.color: {color1}
+menu.items.disabled.text.color: {color2}
+menu.items.active.bg: flat
+menu.items.active.bg.color: #383d42
+menu.items.active.text.color: {color7}
+
+# --------------------------------------------------------
+
+# On Screen Display (OSD)
+osd.bg: flat solid
+osd.bg.color: {color6}
+
+## Border
+osd.border.width: 5
+osd.border.color: {color6}
+
+## Label
+osd.label.bg: flat solid
+osd.label.bg.color: {color6}
+osd.label.text.color: {color1}
+
+## Hightlight/U
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: {color7}
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: {color7}

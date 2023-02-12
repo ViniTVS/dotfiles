@@ -1,0 +1,320 @@
+$bg: {color0};
+$color1: {color1};
+$color2: {color2};
+$color3: {color3};
+$color4: {color4};
+$color5: {color5};
+$color6: {color6};
+$fg: {color7};
+$bg-alt: {color8};
+
+* {
+  all: unset;
+  transition: 200ms ease-out;
+}
+
+.panel {
+  background-color: $bg;
+}
+
+.genwin {
+  background-color: $bg;
+  border-radius: 15px;
+}
+
+
+.desktop_select, .desktop_used {
+  font-family: "Symbols-1000-em Nerd Font Complete Mono";
+  font-size: 24px;
+  padding: 0px 6px 0px 6px;
+  margin: 9px 11px 9px 11px;
+  border-radius: 10px;
+  color: $color3;
+}
+
+.desktop_used {
+  color: $bg;
+  background-color: $color3;
+}
+
+.control-center-launcher {
+  font-family: "Symbols-1000-em Nerd Font Complete Mono";
+  font-size: 28px;
+  padding: 0px 4px 0px 4px;
+  margin: 9px 11px 9px 0px;
+  border-radius: 10px;
+  color: $color3;
+}
+
+.dashboard-launcher {
+  font-family: "Symbols-1000-em Nerd Font Complete Mono";
+  font-size: 28px;
+  padding: 0px 4px 0px 4px;
+  margin: 9px 11px 9px 0px;
+  border-radius: 10px;
+  color: $color5;
+}
+
+.song-title {
+  color: $fg;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 3px 5px 0px 0px;
+}
+
+.song-pp {
+  color: $color5;
+  font-size: 40px;
+  margin: 3px 0px 0px 5px;
+  font-family: "RobotoMono Nerd Font";
+}
+
+.song-prev,
+.song-next {
+  color: $color2;
+  font-size: 40px;
+  margin: 3px 0px 0px 5px;
+  font-family: "RobotoMono Nerd Font";
+}
+
+.systray-box {
+  margin: 9px 14px 9px 14px;
+}
+
+.systray {
+  font-family: "RobotoMono Nerd Font";
+  font-size: 16px;
+  background-color: $color1;
+  padding: 0px 5px 0px 5px;
+  margin: 5px 0px 5px 0px;
+  border-radius: 8px;
+  color: $fg;
+}
+
+.clock {
+  font-size: 30px;
+  font-weight: bold;
+  padding-right: 20px;
+  color: $fg;
+}
+
+.logo {
+  color: $color4;
+  font-family: "RobotoMono Nerd Font";
+  font-size: 28px;
+  padding-right: 20px;
+}
+
+.layout-toggle {
+  font-family: "Material Design Icons Desktop";
+  font-size: 28px;
+  padding: 0px 4px 0px 4px;
+  margin: 9px 11px 9px 0px;
+  color: $color5;
+  border-radius: 10px;
+}
+
+.open-term {
+  font-family: "RobotoMono Nerd Font";
+  font-size: 28px;
+  padding: 0px 4px 0px 4px;
+  margin: 9px 11px 9px 0px;
+  border-radius: 10px;
+  color: $color2;
+  font-weight: bold;
+}
+
+.bat-icon {
+  background-size: contain;
+  background-position: center;
+  min-height: 30px;
+  min-width: 30px;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  margin-right: 7px;
+}
+
+.bat-label {
+  font-family: "Proxima Nova";
+  font-weight: bold;
+  padding: 0px 10px 0px 0px;
+  color: $color4;
+  font-size: 24px;
+}
+
+.seperator {
+  font-size: 40px;
+  font-weight: bold;
+  color: $color1;
+  padding: 0px 0px 0px 10px;
+  margin-bottom: 10px;
+}
+
+.wifi-icon {
+  background-size: contain;
+  background-position: center;
+  min-height: 22px;
+  min-width: 22px;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  margin-right: 7px;
+}
+
+.wifi-label {
+  font-family: "Proxima Nova";
+  font-weight: bold;
+  padding: 0px 10px 0px 0px;
+  color: $color3;
+  font-size: 24px;
+}
+
+.brightness-icon {
+  background-size: contain;
+  background-position: center;
+  min-height: 24px;
+  min-width: 24px;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  margin-right: 7px;
+}
+
+.brightness-scale trough {
+  border-radius: 20px;
+  background-color: $color1;
+  box-shadow: 0px 0px 7px $bg;
+}
+
+.brightness-scale highlight {
+  padding: 0.5em;
+  border-radius: 20px;
+  background: linear-gradient(to right, $color2, $color2);
+}
+
+.volume-icon {
+  font-family: "RobotoMono Nerd Font";
+  font-size: 36px;
+  color: $color4;
+  margin-left: 10px;
+  margin-right: 7px;
+}
+
+.volume-scale trough {
+  border-radius: 20px;
+  background-color: $color1;
+  box-shadow: 0px 0px 7px $bg;
+}
+
+.volume-scale highlight {
+  padding: 0.5em;
+  border-radius: 20px;
+  background: linear-gradient(to left, $color4, $color4);
+}
+
+.bluetooth-icon {
+  font-family: "Material Design Icons Desktop";
+  font-size: 22px;
+  color: $color3;
+  margin-left: 10px;
+  margin-right: 7px;
+}
+
+.bluetooth-label {
+  font-family: "Proxima Nova";
+  font-weight: bold;
+  padding: 0px 10px 0px 0px;
+  color: $color4;
+  font-size: 24px;
+}
+
+
+/** System ********************************************/
+.iconcpu,
+.iconmem,
+.icongpu,
+.iconstor {
+        font-size: 32px;
+        font-weight: normal;
+}
+
+.iconcpu {
+        color: $color3;
+}
+
+.text-cpu {
+        color: $color3;
+        font-weight: bold;
+}
+
+.iconmem {
+        color: $color5;
+}
+
+.text-ram {
+        color: $color5;
+        font-weight: bold;
+}
+
+.icongpu {
+        color: $color2;
+}
+
+.text-gpu {
+        color: $color2;
+        font-weight: bold;
+}
+
+.iconstor {
+        color: $color4;
+}
+
+.text-disk {
+        color: $color4;
+        font-weight: bold;
+}
+
+.cpu_bar,
+.mem_bar,
+.gpu_bar,
+.stor_bar,
+scale trough {
+        all: unset;
+        background-color: $color1;
+        border-radius: 16px;
+        min-height: 5px;
+        min-width: 100px;
+}
+
+.cpu_bar,
+.mem_bar,
+.gpu_bar,
+.stor_bar,
+scale trough highlight {
+        all: unset;
+        border-radius: 16px;
+}
+
+.cpu_bar scale trough highlight {
+        background-color: $color3;
+}
+
+.mem_bar scale trough highlight {
+        background-color: $color5
+}
+
+.gpu_bar scale trough highlight {
+        background-color: $color2;
+}
+
+.stor_bar scale trough highlight {
+        background-color: $color4;
+}
+
+.open-vitals {
+  font-family: "Proxima Nova", "Material Design Icons Desktop";
+  font-size: 22px;
+  font-weight: bold;
+  padding: 2px 8px 0px 8px;
+  margin: 9px 11px 9px 0px;
+  border-radius: 10px;
+  color: $color4;
+}

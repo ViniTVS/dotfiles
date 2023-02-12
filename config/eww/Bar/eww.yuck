@@ -1,0 +1,132 @@
+;; =================== VARS =====================
+(defvar music-reveal false)
+(defvar volume-reveal false)
+(defpoll desktop :interval "0.1s" "scripts/workspaces")
+(defpoll music-status :interval "1s" "scripts/music-info.sh")
+(defpoll playing :interval "0.5s" "playerctl status")
+(defpoll time-state :interval "1s" "date '+%A, %d de %B de %Y %H:%M'")
+(defpoll layout-status :interval "1s" "scripts/change-layout --status")
+(defpoll volume-lvl :interval "3s" "scripts/volume -l")
+(defpoll calendar-day :interval "20h" "+%d")
+(defpoll calendar-year :interval "20h" "+%Y")
+(defpoll calendar-month :interval "20h" "%+B")
+(defpoll CPU_USAGE :interval "2s" `scripts/system --cpu`)
+(defpoll MEM_USAGE :interval "2s" `scripts/system --mem`)
+(defpoll GPU :interval "2s" `scripts/system --gpu`)
+(defpoll STORAGE :interval "2s" `scripts/system --storage`)
+
+;; =================== WIDGETS =====================
+(defwidget sep []
+  (box :class "seperator-box" :vexpand "false" :hexpand "false"
+    (label :class "seperator" :text "|")))
+
+(defwidget left []
+  (box :orientation "h" :space-evenly "false" :class "launcher-box"
+    (button :class {desktop == 0 ? "desktop_used" : "desktop_select" }  :tooltip "Desktop 1" :onclick "scripts/move_desktop 0" "1")
+    (button :class {desktop == 1 ? "desktop_used" : "desktop_select" } :tooltip "Desktop 2" :onclick "scripts/move_desktop 1" "2")
+    (button :class {desktop == 2 ? "desktop_used" : "desktop_select" } :tooltip "Desktop 3" :onclick "scripts/move_desktop 2" "3")
+    (button :class {desktop == 3 ? "desktop_used" : "desktop_select" } :tooltip "Desktop 4" :onclick "scripts/move_desktop 3" "4")
+    (button :class {desktop == 4 ? "desktop_used" : "desktop_select" } :tooltip "Desktop 5" :onclick "scripts/move_desktop 4" "5")
+  )
+)
+
+(defwidget music []
+  (eventbox :onhover "/usr/bin/eww -c $HOME/.config/eww/Bar/ update music-reveal=true"
+    :onhoverlost "/usr/bin/eww -c $HOME/.config/eww/Bar/ update music-reveal=false"
+    (box :class "music-box" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+      (label :class "logo" :text "")
+      (button :class "song-title" music-status)
+      (revealer :transition "slideleft" :reveal music-reveal :duration "350ms"
+        (box :vexpand "false" :hexpand "false" :orientation "h"
+          (button :class "song-prev" :onclick "playerctl previous" "󰒮")
+          (button :class "song-pp" :onclick "playerctl play-pause" {playing == "Paused" ? "󰐊" : "󰏤"})
+          (button :class "song-next" :onclick "playerctl next" "󰒭")
+        )
+      )
+    )
+  )
+)
+
+(defwidget systray []
+  (box :class "systray-box" :space-evenly "false" :hexpand "false" :vexpand "false"
+    (button :class "systray" :onclick "~/.scripts/systray.sh" "")))
+
+(defwidget clock []
+  (box :class "clock-box" :space-evenly "false" :hexpand "false" :vexpand "false"
+    (button :class "clock" :onclick "scripts/launch-apps -c" "${time-state}")))
+
+(defwidget volume []
+  (eventbox :onhover "/usr/bin/eww -c $HOME/.config/eww/Bar/ update volume-reveal=true"
+    :onhoverlost "/usr/bin/eww -c $HOME/.config/eww/Bar/ update volume-reveal=false"
+    (box :class "volume-box" :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+      (label :class "volume-icon" :text "")
+      (revealer :transition "slideright" :reveal volume-reveal :duration "350ms"
+        (scale :class "volume-scale" :width 100 :active true :value volume-lvl :min 0 :max 101 :orientation "h" :onchange "amixer set Master {}% && canberra-gtk-play -f /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga")))))
+
+
+(defwidget wigcalendar [] (box :class "calendar" :orientation "v" :spacing 10 (calendar :class "calendar" :day calendar-day
+  :month calendar-month :year calendar-year)))
+
+(defwidget system []
+  (box :class "genwin" :vexpand "false" :hexpand "false"
+    (box :orientation "v" :spacing 25 :halign "center" :valign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+      (box :class "cpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "iconcpu" :text "󰘚")
+        (scale :min 0 :max 100 :value CPU_USAGE :text :active "false")
+        (label :class "text-cpu" :text "${CPU_USAGE}%"))
+      (box :class "mem_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "iconmem" :text "󰍛")
+        (scale :min 0 :max 100 :value MEM_USAGE :active "false")
+        (label :class "text-ram" :text "${MEM_USAGE}%"))
+      (box :class "gpu_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "icongpu" :text "󰆦")
+        (scale :min 0 :max 100 :value GPU :active "false")
+        (label :class "text-gpu" :text "${GPU}%"))
+      (box :class "stor_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "iconstor" :text "󰋊")
+        (scale :min 0 :max 100 :value STORAGE :active "false")
+        (label :class "text-disk" :text "${STORAGE}%")))))
+  
+(defwidget center []
+  (box :orientation "h"
+    :space-evenly false
+    :halign "center"
+    :class "center-modules"
+    (music)))
+
+(defwidget end []
+  (box :orientation "h"
+    :space-evenly false
+    :halign "end"
+    :class "center-modules"
+    (volume)
+    (sep)
+    (clock)))
+
+(defwidget start []
+  (box :orientation "h"
+    :space-evenly false
+    :halign "start"
+    :class "start-modules"
+    (left)))
+
+(defwidget bar-stuff []
+  (box :class "bar-class"
+    :orientation "h"
+    (start)
+    (center)
+    (end)))
+
+;; =================== WINDOWS =====================
+
+(defwindow panel
+  :geometry (geometry :x "0%" :y "20px" :width "97.5%" :height "60px" :anchor "top center")
+  :stacking "bg"
+  :windowtype "dock"
+  :monitor 0
+  (bar-stuff))
+
+
+(defwindow system :monitor 0 :stacking "fg" :focusable "false" :screen 1
+  :geometry (geometry :x 120 :y 710 :width 300 :height 283)
+  (system))
